@@ -1,8 +1,6 @@
 export default function ContactItem({ contact, remove, update }) {
     const [edit, setEdit] = useState(false);
-    const setEdit() => {
-
-    };
+ 
     if (edit) {
         return (
             <tr>
