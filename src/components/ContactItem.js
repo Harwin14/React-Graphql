@@ -103,7 +103,7 @@ export default function ContactItem({ props, remove, update }) {
                         edit
                     </button>
                 </td>
-                <td>
+                <td> 
                     <button
                         className='btn btn-danger'   
                         type='button' 
