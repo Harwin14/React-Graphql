@@ -18,23 +18,15 @@ export default function ContactList() {
     );
     console.log(data);
 
-    const [
-        updateContact,
-        { data: dataEdit, loading: loadingEdit, error: errorEdit },
-    ] = useMutation(UPDATE_CONTACT, {
+    const [updateContact, { data: dataEdit, loading: loadingEdit, error: errorEdit }] = useMutation(UPDATE_CONTACT, {
         refetchQueries: [{ query: GET_CONTACTS }],
     });
     console.log(dataEdit);
-    const [contact, setContact] = useState({
-        name: '',
-        phone: '',
-    });
 
     if (loadingData || loadingEdit || loading) return <Loading />;
     if (errorData) return <Alert message={errorData} />;
     if (errorEdit) return <Alert message={errorEdit} />;
     if (error) return <Alert message={error} />;
-
 
     return (
         <table className='table table-striped'>
@@ -49,12 +41,12 @@ export default function ContactList() {
                 {list.getContacts.map((item, index) => (
                     <ContactItem
                         key={item._id}
-                        contact={item}
+                        props={item}
                         remove={() =>
                             deleteContact({ variables: { id: item._id } })
                         }
                         update={() =>
-                            updateContact({ variables: contact })
+                            updateContact({ variables: {id:item._id, name:item.name, phone:item.phone} })
                         }
                     />
                 ))}
