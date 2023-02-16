@@ -105,7 +105,7 @@ export default function ContactItem({ props, remove, update }) {
                 </td>
                 <td>
                     <button
-                        className='btn btn-danger'  
+                        className='btn btn-danger'   
                         type='button' 
                         onClick={remove}
                     >
