@@ -114,5 +114,5 @@ export default function ContactItem({ props, remove, update }) {
                 </td>
             </tr>
         );
-    }
+    } 
 }
