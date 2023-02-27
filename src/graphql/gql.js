@@ -24,7 +24,7 @@ export const GET_CONTACTS = gql`
                 } 
                 success
             } 
-        }
+        } 
     
 `;
 
