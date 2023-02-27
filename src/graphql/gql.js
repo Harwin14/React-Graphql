@@ -1,13 +1,31 @@
 import { gql } from '@apollo/client';
 
 export const GET_CONTACTS = gql`
-    query {
-        getContacts {
-            _id
-            name
-            phone
+    query getContacts (
+        $page: Int! = 1
+        $name : String
+        $phone : String
+        ){
+            load(page: $page, name: $name, phone: $phone){
+                data{
+                    params{
+                        rowCount
+                        totalCount
+                        page
+                        totalPages
+                        name
+                        phone
+                    }
+                    contacts{
+                     _id
+                     name
+                     phone    
+                    }
+                }
+                success
+            } 
         }
-    }
+    
 `;
 
 export const CREATE_CONTACT = gql`

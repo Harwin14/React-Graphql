@@ -3,14 +3,13 @@ import { useState } from 'react';
 import { Loading, Alert } from './Util';
 import { GET_CONTACTS, CREATE_CONTACT } from '../graphql/gql';
 
-export default function Contactform() {
-    const [createContact, { data, loading, error }] = useMutation(
+export default function Contactform(props) {
+    const [createContact, {  loading, error }] = useMutation(
         CREATE_CONTACT,
         {
             refetchQueries: [{ query: GET_CONTACTS }],
         }
     );
-    console.log(data);
 
     const [contact, setContact] = useState({
         name: '',
@@ -21,7 +20,12 @@ export default function Contactform() {
     if (error) return <Alert message={error} />;
 
     return (
-        <form
+        <div className="card mx-2">
+            <div className="card-header">
+                <h3>Form Add</h3>
+            </div>
+            <div className="card-body">
+            <form
             onSubmit={(e) => {
                 e.preventDefault();
                 createContact({ variables: contact });
@@ -63,6 +67,10 @@ export default function Contactform() {
             <button type='submit' className='btn btn-primary'>
                 Save
             </button>
+            <button type='button' className='btn btn-waning' onClick={props.cancelForm}>Cancel</button>
         </form>
+            </div>
+        </div>
+      
     );
 }
