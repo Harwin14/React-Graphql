@@ -21,7 +21,7 @@ export const GET_CONTACTS = gql`
                      name
                      phone    
                     }
-                }
+                } 
                 success
             } 
         }
