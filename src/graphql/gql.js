@@ -26,7 +26,7 @@ export const GET_CONTACTS = gql`
             } 
         } 
     
-`;
+`; 
  
 export const CREATE_CONTACT = gql`
     mutation createContact($name: String!, $phone: String!) {
